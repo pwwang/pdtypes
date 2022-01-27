@@ -19,28 +19,28 @@ repos:
         args:
             - get_ver() { echo $(egrep "^__version|^version" $1 | cut -d= -f2 | sed 's/\"\| //g'); };
               v1=`get_ver pyproject.toml`;
-              v2=`get_ver liquid/__init__.py`;
+              v2=`get_ver pdtypes/__init__.py`;
               if [[ $v1 == $v2 ]]; then exit 0; else exit 1; fi
         pass_filenames: false
-        files: ^pyproject\.toml|liquid/__init__\.py$
+        files: ^pyproject\.toml|pdtypes/__init__\.py$
     -   id: flake8
         name: Run flake8
         entry: flake8
         language: system
-        args: [liquid]
+        args: [pdtypes]
         pass_filenames: false
-        files: ^liquid/.+$
+        files: ^pdtypes/.+$
     -   id: pytest
         name: Run pytest
         entry: pytest
         language: system
         args: [tests/]
         pass_filenames: false
-        files: ^tests/.+$|^liquid/.+$
+        files: ^tests/.+$|^pdtypes/.+$
     -   id: mypy
         name: Run mypy type check
         entry: mypy
         language: system
-        args: ["-p", "liquid"]
+        args: ["-p", "pdtypes"]
         pass_filenames: false
-        files: ^liquid/.+$
+        files: ^pdtypes/.+$
