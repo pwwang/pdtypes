@@ -1,0 +1,1778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>liquid.filters.jekyll - liquidpy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Ubuntu";--md-code-font-family:"Ubuntu Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    
+      <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    
+      <link rel="stylesheet" href="../../css/mkapi-common.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#liquidfiltersjekyll" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="liquidpy" class="md-header__button md-logo" aria-label="liquidpy" data-md-component="logo">
+      
+  <img src="../../favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            liquidpy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              liquid.filters.jekyll
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/pwwang/liquidpy/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pwwang/liquidpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="liquidpy" class="md-nav__button md-logo" aria-label="liquidpy" data-md-component="logo">
+      
+  <img src="../../favicon.png" alt="logo">
+
+    </a>
+    liquidpy
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pwwang/liquidpy/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pwwang/liquidpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        Compatibility with standard liquid
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jekyll/" class="md-nav__link">
+        Compatibility with jekyll liquid
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../shopify/" class="md-nav__link">
+        Compatibility with shopify-extended liquid
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wild/" class="md-nav__link">
+        Wild mode
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Change log
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      <label class="md-nav__link" for="__nav_8_1">
+        liquid
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="liquid" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          liquid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid/" class="md-nav__link">
+        liquid
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      <label class="md-nav__link" for="__nav_8_2">
+        liquid.tags
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="liquid.tags" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          liquid.tags
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags/" class="md-nav__link">
+        liquid.tags
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags.standard/" class="md-nav__link">
+        liquid.tags.standard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags.jekyll/" class="md-nav__link">
+        liquid.tags.jekyll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags.shopify/" class="md-nav__link">
+        liquid.tags.shopify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags.wild/" class="md-nav__link">
+        liquid.tags.wild
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.tags.manager/" class="md-nav__link">
+        liquid.tags.manager
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.patching/" class="md-nav__link">
+        liquid.patching
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.liquid/" class="md-nav__link">
+        liquid.liquid
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.utils/" class="md-nav__link">
+        liquid.utils
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.defaults/" class="md-nav__link">
+        liquid.defaults
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" checked>
+      
+      <label class="md-nav__link" for="__nav_8_3">
+        liquid.filters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="liquid.filters" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          liquid.filters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.filters/" class="md-nav__link">
+        liquid.filters
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.filters.standard/" class="md-nav__link">
+        liquid.filters.standard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          liquid.filters.jekyll
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        liquid.filters.jekyll
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#liquidfiltersjekyll" class="md-nav__link">
+    jekyll
+  </a>
+  
+    <nav class="md-nav" aria-label="jekyll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllrelative_url" class="md-nav__link">
+    relative_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllabsolute_url" class="md-nav__link">
+    absolute_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylldate_to_xmlschema" class="md-nav__link">
+    date_to_xmlschema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllwhere_exp" class="md-nav__link">
+    where_exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllfind" class="md-nav__link">
+    find
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllfind_exp" class="md-nav__link">
+    find_exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllgroup_by_expr" class="md-nav__link">
+    group_by_expr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllxml_escape" class="md-nav__link">
+    xml_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllcgi_escape" class="md-nav__link">
+    cgi_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylluri_escape" class="md-nav__link">
+    uri_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljsonify" class="md-nav__link">
+    jsonify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllarray_to_sentence_string" class="md-nav__link">
+    array_to_sentence_string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljekyll_slugify" class="md-nav__link">
+    jekyll_slugify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllnumber_of_words" class="md-nav__link">
+    number_of_words
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllmarkdownify" class="md-nav__link">
+    markdownify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllnormalize_whitespace" class="md-nav__link">
+    normalize_whitespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljekyll_sort" class="md-nav__link">
+    jekyll_sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllsample" class="md-nav__link">
+    sample
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.filters.shopify/" class="md-nav__link">
+        liquid.filters.shopify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.filters.wild/" class="md-nav__link">
+        liquid.filters.wild
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.filters.manager/" class="md-nav__link">
+        liquid.filters.manager
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" >
+      
+      <label class="md-nav__link" for="__nav_8_4">
+        liquid.exts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="liquid.exts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_4">
+          <span class="md-nav__icon md-icon"></span>
+          liquid.exts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts/" class="md-nav__link">
+        liquid.exts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.standard/" class="md-nav__link">
+        liquid.exts.standard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.ext/" class="md-nav__link">
+        liquid.exts.ext
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.jekyll/" class="md-nav__link">
+        liquid.exts.jekyll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.front_matter/" class="md-nav__link">
+        liquid.exts.front_matter
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.shopify/" class="md-nav__link">
+        liquid.exts.shopify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.wild/" class="md-nav__link">
+        liquid.exts.wild
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquid.exts.filter_colon/" class="md-nav__link">
+        liquid.exts.filter_colon
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#liquidfiltersjekyll" class="md-nav__link">
+    jekyll
+  </a>
+  
+    <nav class="md-nav" aria-label="jekyll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllrelative_url" class="md-nav__link">
+    relative_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllabsolute_url" class="md-nav__link">
+    absolute_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylldate_to_xmlschema" class="md-nav__link">
+    date_to_xmlschema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllwhere_exp" class="md-nav__link">
+    where_exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllfind" class="md-nav__link">
+    find
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllfind_exp" class="md-nav__link">
+    find_exp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllgroup_by_expr" class="md-nav__link">
+    group_by_expr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllxml_escape" class="md-nav__link">
+    xml_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllcgi_escape" class="md-nav__link">
+    cgi_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylluri_escape" class="md-nav__link">
+    uri_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljsonify" class="md-nav__link">
+    jsonify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllarray_to_sentence_string" class="md-nav__link">
+    array_to_sentence_string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljekyll_slugify" class="md-nav__link">
+    jekyll_slugify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllnumber_of_words" class="md-nav__link">
+    number_of_words
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllmarkdownify" class="md-nav__link">
+    markdownify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllnormalize_whitespace" class="md-nav__link">
+    normalize_whitespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekylljekyll_sort" class="md-nav__link">
+    jekyll_sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liquidfiltersjekyllsample" class="md-nav__link">
+    sample
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pwwang/liquidpy/edit/master/docs/api/liquid.filters.jekyll.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>liquid.filters.jekyll</h1>
+                
+                <div class="mkapi-node" id="liquid.filters.jekyll">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">module</div>
+    <h2 id="liquidfiltersjekyll" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../liquid.filters/#liquid.filters">liquid.filters</a>.</span><span class="mkapi-object-name">jekyll</span></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll" title="Source for liquid.filters.jekyll">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Provides jekyll filtersSee: <a href="https://jekyllrb.com/docs/liquid/filters/">https://jekyllrb.com/docs/liquid/filters/</a></p>
+</div>
+    </div>
+  <div class="mkapi-section functions">
+      <div class="mkapi-section-name functions">
+          <span class="mkapi-section-name-body functions">Functions</span> 
+        </div>
+      <div class="mkapi-section-body functions"><ul class="mkapi-items">
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.absolute_url">absolute_url</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Get absolute url based on site.baseurl<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.absolute_url" title="Source for liquid.filters.jekyll.absolute_url">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.array_to_sentence_string">array_to_sentence_string</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">array</code>, <code class="mkapi-object-signature">connector</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Join an array of things into a string by separating with commas and theword "and" for the last one.
+<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.array_to_sentence_string" title="Source for liquid.filters.jekyll.array_to_sentence_string">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.cgi_escape">cgi_escape</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">CGI escape a string for use in a URL. Replaces any special characterswith appropriate %XX replacements.
+<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.cgi_escape" title="Source for liquid.filters.jekyll.cgi_escape">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.date_to_xmlschema">date_to_xmlschema</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Convert date to xml schema format<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.date_to_xmlschema" title="Source for liquid.filters.jekyll.date_to_xmlschema">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.find">find</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">attr</code>, <code class="mkapi-object-signature">query</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Find elements from array using attribute value<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.find" title="Source for liquid.filters.jekyll.find">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.find_exp">find_exp</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Find elements using expression<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.find_exp" title="Source for liquid.filters.jekyll.find_exp">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.group_by_expr">group_by_expr</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Group by data using expression<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.group_by_expr" title="Source for liquid.filters.jekyll.group_by_expr">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.jekyll_slugify">jekyll_slugify</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">mode</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Slugify a string<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jekyll_slugify" title="Source for liquid.filters.jekyll.jekyll_slugify">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.jekyll_sort">jekyll_sort</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">array</code>, <code class="mkapi-object-signature">prop</code>, <code class="mkapi-object-signature">none_pos</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Sort an array in a reverse way by default.<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jekyll_sort" title="Source for liquid.filters.jekyll.jekyll_sort">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.jsonify">jsonify</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Convert the input into json string<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jsonify" title="Source for liquid.filters.jekyll.jsonify">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.markdownify">markdownify</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Markdownify a string<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.markdownify" title="Source for liquid.filters.jekyll.markdownify">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.normalize_whitespace">normalize_whitespace</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Replace multiple spaces into one<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.normalize_whitespace" title="Source for liquid.filters.jekyll.normalize_whitespace">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.number_of_words">number_of_words</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">mode</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(int)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Count the number of words in the input string.<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.number_of_words" title="Source for liquid.filters.jekyll.number_of_words">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.relative_url">relative_url</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Get relative url based on site.baseurl<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.relative_url" title="Source for liquid.filters.jekyll.relative_url">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.sample">sample</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">n</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Sample elements from array<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.sample" title="Source for liquid.filters.jekyll.sample">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.uri_escape">uri_escape</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">URI escape a string.<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.uri_escape" title="Source for liquid.filters.jekyll.uri_escape">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.where_exp">where_exp</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Where using expression<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.where_exp" title="Source for liquid.filters.jekyll.where_exp">&lt;/&gt;</a></span></li>
+
+<li class="function"><code class="mkapi-item-name"><a href="#liquid.filters.jekyll.xml_escape">xml_escape</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Convert an object into its String representation<a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.xml_escape" title="Source for liquid.filters.jekyll.xml_escape">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.relative_url">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllrelative_url" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">relative_url</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.relative_url" title="Source for liquid.filters.jekyll.relative_url">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Get relative url based on site.baseurl</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.absolute_url">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllabsolute_url" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">absolute_url</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.absolute_url" title="Source for liquid.filters.jekyll.absolute_url">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Get absolute url based on site.baseurl</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.date_to_xmlschema">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekylldate_to_xmlschema" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">date_to_xmlschema</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.date_to_xmlschema" title="Source for liquid.filters.jekyll.date_to_xmlschema">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Convert date to xml schema format</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.where_exp">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllwhere_exp" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">where_exp</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.where_exp" title="Source for liquid.filters.jekyll.where_exp">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Where using expression</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.find">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllfind" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">find</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">attr</code>, <code class="mkapi-object-signature">query</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.find" title="Source for liquid.filters.jekyll.find">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Find elements from array using attribute value</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.find_exp">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllfind_exp" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">find_exp</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.find_exp" title="Source for liquid.filters.jekyll.find_exp">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Find elements using expression</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.group_by_expr">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllgroup_by_expr" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">group_by_expr</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">env</code>, <code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">item</code>, <code class="mkapi-object-signature">expr</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.group_by_expr" title="Source for liquid.filters.jekyll.group_by_expr">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Group by data using expression</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.xml_escape">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllxml_escape" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">xml_escape</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.xml_escape" title="Source for liquid.filters.jekyll.xml_escape">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Convert an object into its String representation</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The object to be converted</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The converted string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.cgi_escape">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllcgi_escape" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">cgi_escape</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.cgi_escape" title="Source for liquid.filters.jekyll.cgi_escape">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>CGI escape a string for use in a URL. Replaces any special characterswith appropriate %XX replacements.</p>
+</div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The string to escape</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The escaped string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.uri_escape">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekylluri_escape" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">uri_escape</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.uri_escape" title="Source for liquid.filters.jekyll.uri_escape">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>URI escape a string.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The string to escape</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The escaped string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.jsonify">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekylljsonify" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">jsonify</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jsonify" title="Source for liquid.filters.jekyll.jsonify">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Convert the input into json string</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(any)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The Array or Hash to be converted</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The converted json string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.array_to_sentence_string">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllarray_to_sentence_string" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">array_to_sentence_string</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">array</code>, <code class="mkapi-object-signature">connector=&#39;and&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.array_to_sentence_string" title="Source for liquid.filters.jekyll.array_to_sentence_string">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Join an array of things into a string by separating with commas and theword "and" for the last one.</p>
+</div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">array</code>
+<span class="mkapi-item-type">(sequence of str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The Array of Strings to join.</span></li>
+
+<li><code class="mkapi-item-name">connector</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Word used to connect the last 2 items in the array</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The formatted string.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.jekyll_slugify">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekylljekyll_slugify" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">jekyll_slugify</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">mode=&#39;default&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jekyll_slugify" title="Source for liquid.filters.jekyll.jekyll_slugify">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Slugify a string</p><p>Note that non-ascii characters are always translated to ascii ones.</p>
+</div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The input string</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">How string is slugified</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(str)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The slugified string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.number_of_words">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllnumber_of_words" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">number_of_words</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">input</code>, <code class="mkapi-object-signature">mode=None</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.number_of_words" title="Source for liquid.filters.jekyll.number_of_words">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Count the number of words in the input string.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">input</code>
+<span class="mkapi-item-type">(str)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The String on which to operate.</span></li>
+
+<li><code class="mkapi-item-name">mode</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Passing 'cjk' as the argument will count every CJK characterdetected as one word irrespective of being separated by whitespace.
+Passing 'auto' (auto-detect) works similar to 'cjk'
+</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> <span class="mkapi-item-type">(int)</span>
+        </div>
+      <div class="mkapi-section-body returns"><p>The word count.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.markdownify">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllmarkdownify" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">markdownify</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.markdownify" title="Source for liquid.filters.jekyll.markdownify">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Markdownify a string</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.normalize_whitespace">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllnormalize_whitespace" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">normalize_whitespace</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.normalize_whitespace" title="Source for liquid.filters.jekyll.normalize_whitespace">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Replace multiple spaces into one</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.jekyll_sort">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekylljekyll_sort" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">jekyll_sort</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">array</code>, <code class="mkapi-object-signature">prop=None</code>, <code class="mkapi-object-signature">none_pos=&#39;first&#39;</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.jekyll_sort" title="Source for liquid.filters.jekyll.jekyll_sort">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Sort an array in a reverse way by default.</p><p>Note that the order might be different than it with ruby. For example,
+in python <code>"1abc" &gt; "1"</code>, but it's not the case in jekyll. Also, it's
+always in reverse order for property values.</p>
+</div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">array</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">The array</span></li>
+
+<li><code class="mkapi-item-name">prop</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">property name</span></li>
+
+<li><code class="mkapi-item-name">none_pos</code>
+<span class="mkapi-item-type">(str, optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">None order (first or last).</span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section returns">
+      <div class="mkapi-section-name returns">
+          <span class="mkapi-section-name-body returns">Returns</span> 
+        </div>
+      <div class="mkapi-section-body returns"><p>The sorted array</p></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="liquid.filters.jekyll.sample">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object function code top">
+    <div class="mkapi-object-kind function top">function</div>
+    <h3 id="liquidfiltersjekyllsample" class="mkapi-object-body function top"><code class="mkapi-object-prefix"><a href="#liquid.filters.jekyll">liquid.filters.jekyll</a>.</code><code class="mkapi-object-name">sample</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">value</code>, <code class="mkapi-object-signature">n=1</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/liquid.filters.jekyll/#liquid.filters.jekyll.sample" title="Source for liquid.filters.jekyll.sample">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Sample elements from array</p></div>
+    </div>
+  </div>
+
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../liquid.filters.standard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: liquid.filters.standard" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              liquid.filters.standard
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../liquid.filters.shopify/" class="md-footer__link md-footer__link--next" aria-label="Next: liquid.filters.shopify" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              liquid.filters.shopify
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+        <script src="../../js/mkapi.js"></script>
+      
+    
+  </body>
+</html>
