@@ -1,0 +1,46 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+fail_fast: false
+exclude: '^README.rst$|^tests/|^setup.py$|^examples/|^docs/api\.md'
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 5df1a4bf6f04a1ed3a643167b38d502575e29aef
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+-   repo: local
+    hooks:
+    -   id: versionchecker
+        name: Check version agreement in pyproject and __version__
+        entry: bash -c
+        language: system
+        args:
+            - get_ver() { echo $(egrep "^__version|^version" $1 | cut -d= -f2 | sed 's/\"\| //g'); };
+              v1=`get_ver pyproject.toml`;
+              v2=`get_ver liquid/__init__.py`;
+              if [[ $v1 == $v2 ]]; then exit 0; else exit 1; fi
+        pass_filenames: false
+        files: ^pyproject\.toml|liquid/__init__\.py$
+    -   id: flake8
+        name: Run flake8
+        entry: flake8
+        language: system
+        args: [liquid]
+        pass_filenames: false
+        files: ^liquid/.+$
+    -   id: pytest
+        name: Run pytest
+        entry: pytest
+        language: system
+        args: [tests/]
+        pass_filenames: false
+        files: ^tests/.+$|^liquid/.+$
+    -   id: mypy
+        name: Run mypy type check
+        entry: mypy
+        language: system
+        args: ["-p", "liquid"]
+        pass_filenames: false
+        files: ^liquid/.+$
