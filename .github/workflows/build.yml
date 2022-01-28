@@ -12,11 +12,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9]
         pandas: [
           pandas==1.2.0,
           pandas==1.3.0,
-          pandas==1.4.0
+          pandas # latest pandas for the specific python version
         ]
 
     steps:
@@ -32,9 +32,9 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -v
           # reinstall pandas to specific version
-          pip install $pandas
+          pip install $PANDAS
         env:
-          JINJA2: ${{ matrix.pandas }}
+          PANDAS: ${{ matrix.pandas }}
       - name: Test with pytest
         run: pytest tests/ --junitxml=junit/test-results-${{ matrix.python-version }}.xml
       - name: Upload pytest test results
