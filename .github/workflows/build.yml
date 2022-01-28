@@ -19,6 +19,9 @@ jobs:
           pandas==1.4.0,
           pandas # latest pandas for the specific python version
         ]
+        exclude:
+          - python-version: 3.7
+            pandas: pandas==1.4.0
 
     steps:
       - uses: actions/checkout@v2
