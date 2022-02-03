@@ -1,6 +1,6 @@
 # pdtypes
 
-Show data types for pandas data frames in terminal and notebooks
+Show data types for pandas data frames in terminal and notebooks by monkey-patching pandas formatters
 
 | Turn this | into |
 | --------- | ---- |

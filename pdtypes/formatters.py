@@ -113,8 +113,8 @@ class PdtypesGenericArrayFormatter(GenericArrayFormatter):
 
         def _format(x):
             if (
-                self.na_rep is not None and
-                is_scalar(x) and isna(x)
+                self.na_rep is not None
+                and is_scalar(x) and isna(x)
             ):  # pragma: no cover
                 try:
                     # try block for np.isnat specifically
