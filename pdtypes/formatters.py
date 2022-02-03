@@ -411,7 +411,7 @@ class PdtypesHTMLFormatter(HTMLFormatter):
     def render(self) -> List[str]:
         """Render the df"""
         super().render()
-        self.write(self.frame.attrs.get("__pdtypes_html_footer", ""))
+        self.write(self.frame.attrs.get("_html_footer", ""))
 
         return self.elements
 
@@ -426,7 +426,7 @@ class PdtypesStringFormatter(StringFormatter):
     def to_string(self) -> str:
         """To string representation"""
         text = super().to_string()
-        if "__pdtypes_string_footer" in self.frame.attrs:
-            text = f"{text}\n{self.frame.attrs['__pdtypes_string_footer']}"
+        if "_str_footer" in self.frame.attrs:
+            text = f"{text}\n{self.frame.attrs['_str_footer']}"
 
         return text
