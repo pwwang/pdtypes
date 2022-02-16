@@ -15,7 +15,8 @@ def dataframegroupby_repr_html_(self, *args, **kwargs) -> str:
         self,
         "_html_footer",
         (
-            f"<p>Groups: {', '.join(self.grouper.names)} "
+            "<p>Groups: "
+            f"{', '.join((str(name) for name in self.grouper.names))} "
             f"(n={self.grouper.ngroups})</p>"
         ),
     )
@@ -29,7 +30,7 @@ def dataframegroupby__repr__(self, *args, **kwargs) -> str:
         self,
         "_str_footer",
         (
-            f"[Groups: {', '.join(self.grouper.names)} "
+            f"[Groups: {', '.join((str(name) for name in self.grouper.names))} "
             f"(n={self.grouper.ngroups})]"
         ),
     )
