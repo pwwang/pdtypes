@@ -190,7 +190,10 @@ class PdtypesHTMLFormatter(HTMLFormatter):
         row: List[str] = []
         for i in range(nrows):
 
-            if is_truncated_vertically and i == (self.fmt.tr_row_num):
+            if (
+                is_truncated_vertically
+                and i == (self.fmt.tr_row_num)
+            ):  # pragma: no cover
                 str_sep_row = ["..."] * len(row)
                 tags = (
                     {
@@ -240,7 +243,7 @@ class PdtypesHTMLFormatter(HTMLFormatter):
 
     def _write_hierarchical_rows(
         self, fmt_values: Mapping[int, List[str]], indent: int
-    ) -> None:
+    ) -> None:  # pragma: no cover
         template = 'rowspan="{span}" valign="top"'
 
         is_truncated_horizontally = self.fmt.is_truncated_horizontally
@@ -411,7 +414,7 @@ class PdtypesHTMLFormatter(HTMLFormatter):
     def render(self) -> List[str]:
         """Render the df"""
         super().render()
-        self.write(self.frame.attrs.get("_html_footer", ""))
+        self.write(getattr(self.frame, "_html_footer", ""))
 
         return self.elements
 
@@ -426,7 +429,8 @@ class PdtypesStringFormatter(StringFormatter):
     def to_string(self) -> str:
         """To string representation"""
         text = super().to_string()
-        if "_str_footer" in self.frame.attrs:
-            text = f"{text}\n{self.frame.attrs['_str_footer']}"
+        str_footer = getattr(self.frame, "_str_footer", None)
+        if str_footer:
+            text = f"{text}\n{str_footer}"
 
         return text

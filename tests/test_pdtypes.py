@@ -1,6 +1,7 @@
 import pytest
 import pdtypes
 import pandas as pd
+from pdtypes.groupby import _with_footer_property
 
 @pytest.fixture
 def patched():
@@ -61,3 +62,17 @@ def test_patched_df(patched, df, gf, df_df, big_df):
 def test_patched_multiindex_df(patched, mf):
     assert "x y <int64>" in str(mf)
     assert str(mf).count("<int64>") == 1
+
+
+def test_patched_not_affecting_original_footer(patched, df):
+    gf = df.groupby('x')
+    assert "Groups" in gf._repr_html_()
+    assert "Groups" in str(gf)
+
+    assert "Groups" not in df._repr_html_()
+    assert "Groups" not in str(df)
+
+    with _with_footer_property(gf, "_html_footer", "I am a DF"):
+        assert "I am a DF" in df._repr_html_()
+        assert "Groups" in gf._repr_html_()
+        assert "I am a DF" in df._repr_html_()
