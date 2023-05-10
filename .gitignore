@@ -107,8 +107,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-poetry.lock
-
 # tagit backup files
 *.bak
 
