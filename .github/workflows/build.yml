@@ -20,7 +20,7 @@ jobs:
         ]
         exclude:
           - python-version: 3.8
-            pandas: pandas==2.0.0
+            pandas: pandas==2.1.0
 
     steps:
       - uses: actions/checkout@v3
@@ -35,7 +35,7 @@ jobs:
           poetry config virtualenvs.create false
           poetry install -v
           # reinstall pandas to specific version
-          pip install $PANDAS
+          pip install -U $PANDAS
         env:
           PANDAS: ${{ matrix.pandas }}
       - name: Test with pytest
