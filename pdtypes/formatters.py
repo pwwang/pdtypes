@@ -2,11 +2,12 @@
 1. add dtypes next to column names when printing
 2. collapse data frames when they are elements of a parent data frame.
 """
+from typing import Mapping, List
+
 from pandas import DataFrame
 from pandas.io.formats.html import (
     HTMLFormatter,
     NotebookFormatter,
-    Mapping,
     MultiIndex,
     get_level_lengths,
 )
@@ -14,7 +15,6 @@ from pandas.io.formats.format import (
     DataFrameFormatter,
     GenericArrayFormatter,
     partial,
-    List,
     QUOTE_NONE,
     get_option,
     NA,
