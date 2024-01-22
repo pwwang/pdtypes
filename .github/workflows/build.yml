@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        python-version: [3.8, 3.9, "3.10", "3.11"]
         pandas: [
           pandas==2.0.0,
           pandas==2.1.0,
@@ -22,6 +22,8 @@ jobs:
         exclude:
           - python-version: 3.8
             pandas: pandas==2.1.0
+          - python-version: 3.8
+            pandas: pandas==2.2.0
 
     steps:
       - uses: actions/checkout@v3
