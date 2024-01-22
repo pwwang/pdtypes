@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "pdtypes"
-version = "0.2.0"
+version = "0.2.1"
 description = "Show data types for pandas data frames in terminal and notebooks"
 authors = [ "pwwang <pwwang@pwwang.com>",]
 license = "BSD 3-Clause"
