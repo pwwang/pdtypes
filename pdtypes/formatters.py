@@ -13,47 +13,26 @@ from pandas.io.formats.html import (
 )
 from pandas.io.formats.format import (
     DataFrameFormatter,
-    GenericArrayFormatter,
-    partial,
-    QUOTE_NONE,
-    get_option,
-    NA,
-    NaT,
-    np,
-    PandasObject,
-    extract_array,
     lib,
-    notna,
-    is_float,
     format_array,
 )
+try:
+    from pandas.io.formats.format import (
+        GenericArrayFormatter,
+    )
+except ImportError:  # pragma: no cover
+    # pandas 2.2
+    from pandas.io.formats.format import (
+        _GenericArrayFormatter as GenericArrayFormatter,
+    )
+
 from pandas.io.formats.string import StringFormatter
-from pandas.io.formats.printing import pprint_thing
-from pandas.core.dtypes.common import is_scalar
-from pandas.core.dtypes.missing import isna
-
-
-# patch more formatters?
-# pandas 1.2.0 doesn't have this function
-def _trim_zeros_single_float(str_float: str) -> str:  # pragma: no cover
-    """
-    Trims trailing zeros after a decimal point,
-    leaving just one if necessary.
-    """
-    str_float = str_float.rstrip("0")
-    if str_float.endswith("."):
-        str_float += "0"
-
-    return str_float
 
 
 class PdtypesDataFrameFormatter(DataFrameFormatter):
     """Custom formatter for DataFrame"""
 
     def get_strcols(self) -> List[List[str]]:
-        """
-        Render a DataFrame to a list of columns (as lists of strings).
-        """
         strcols = self._get_strcols_without_index()
 
         if self.index:
@@ -86,85 +65,12 @@ class PdtypesGenericArrayFormatter(GenericArrayFormatter):
     """
 
     def _format_strings(self) -> List[str]:
-        if self.float_format is None:
-            float_format = get_option("display.float_format")
-            if float_format is None:
-                precision = get_option("display.precision")
-                # previous pandas
-                # float_format = lambda x: f"{x: .{precision:d}f}"
-                # pandas 1.4
-                float_format = lambda x: _trim_zeros_single_float(
-                    f"{x: .{precision:d}f}"
-                )
-        else:  # pragma: no cover
-            float_format = self.float_format
+        out = super()._format_strings()
+        for i, v in enumerate(self.values):
+            if isinstance(v, DataFrame):
+                out[i] = f"<DF {v.shape[0]}x{v.shape[1]}>"
 
-        if self.formatter is not None:  # pragma: no cover
-            formatter = self.formatter
-        else:
-            quote_strings = (
-                self.quoting is not None and self.quoting != QUOTE_NONE
-            )
-            formatter = partial(
-                pprint_thing,
-                escape_chars=("\t", "\r", "\n"),
-                quote_strings=quote_strings,
-            )
-
-        def _format(x):
-            if (
-                self.na_rep is not None
-                and is_scalar(x) and isna(x)
-            ):  # pragma: no cover
-                try:
-                    # try block for np.isnat specifically
-                    # determine na_rep if x is None or NaT-like
-                    if x is None:
-                        return "None"
-                    if x is NA:
-                        return str(NA)
-                    if x is NaT or np.isnat(x):
-                        return "NaT"
-                except (TypeError, ValueError):
-                    # np.isnat only handles datetime or timedelta objects
-                    pass
-                return self.na_rep
-            # Show data frame as collapsed representation
-            if isinstance(x, DataFrame):
-                return f"<DF {x.shape[0]}x{x.shape[1]}>"
-            if isinstance(x, PandasObject):  # pragma: no cover
-                return str(x)
-            # else:
-            # object dtype
-            return str(formatter(x))  # pragma: no cover
-
-        vals = extract_array(self.values, extract_numpy=True)
-
-        is_float_type = (
-            lib.map_infer(vals, is_float)
-            # vals may have 2 or more dimensions
-            & np.all(notna(vals), axis=tuple(range(1, len(vals.shape))))
-        )
-        leading_space = self.leading_space
-        if leading_space is None:  # pragma: no cover
-            leading_space = is_float_type.any()
-
-        fmt_values = []
-        for i, v in enumerate(vals):  # pragma: no cover
-            if not is_float_type[i] and leading_space:
-                fmt_values.append(f" {_format(v)}")
-            elif is_float_type[i]:
-                fmt_values.append(_trim_zeros_single_float(float_format(v)))
-            else:
-                if leading_space is False:
-                    # False specifically, so that the default is
-                    # to include a space if we get here.
-                    tpl = "{v}"
-                else:
-                    tpl = " {v}"
-                fmt_values.append(tpl.format(v=_format(v)))
-
-        return fmt_values
+        return out
 
 
 class PdtypesHTMLFormatter(HTMLFormatter):
@@ -179,11 +85,11 @@ class PdtypesHTMLFormatter(HTMLFormatter):
         nrows = len(self.fmt.tr_frame) + 1
 
         if self.fmt.index:
-            fmtter = self.fmt._get_formatter("__index__")
-            if fmtter is not None:  # pragma: no cover
-                index_values = self.fmt.tr_frame.index.map(fmtter)
-            else:
-                index_values = self.fmt.tr_frame.index.format()
+            fmtter = self.fmt._get_formatter("__index__") or str
+            index_values = self.fmt.tr_frame.index.map(fmtter)
+
+        # pandas 2.2
+        index_values = list(index_values)
         # dtype row
         index_values.insert(0, "")
 

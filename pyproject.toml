@@ -19,16 +19,20 @@ pandas = "^2.0"
 [tool.poetry.dev-dependencies]
 pytest = "*"
 pytest-cov = "*"
+pyarrow = "*"  # pandas 2.2 warns about pyarrow not being installed
+ipykernel = "*"
+jinja2 = "*"
 
 [tool.black]
-line-length = 80
-target-version = ['py38', 'py39']
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
 include = '\.pyi?$'
 
 [tool.pytest.ini_options]
 addopts = "-vv --cov-config=.coveragerc --cov=pdtypes --cov-report xml:cov.xml --cov-report term-missing"
 console_output_style = "progress"
 junit_family = "xunit1"
+filterwarnings = "error"
 
 [tool.mypy]
 ignore_missing_imports = true

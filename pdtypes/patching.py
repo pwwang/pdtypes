@@ -26,8 +26,10 @@ from .groupby import (
 def patch() -> None:
     """Money-patch pandas dataframe formatters to show data types in terminal
     and notebooks"""
-    format.DataFrameFormatter = PdtypesDataFrameFormatter
+    # pandas 2.2
+    format._GenericArrayFormatter = PdtypesGenericArrayFormatter
     format.GenericArrayFormatter = PdtypesGenericArrayFormatter
+    format.DataFrameFormatter = PdtypesDataFrameFormatter
     html.HTMLFormatter = PdtypesHTMLFormatter
     html.NotebookFormatter = PdtypesNotebookFormatter
     string.StringFormatter = PdtypesStringFormatter
@@ -37,6 +39,8 @@ def patch() -> None:
 
 def unpatch() -> None:
     """Unpatch pandas, get everything back to what it was."""
+    # pandas 2.2
+    format._GenericArrayFormatter = GenericArrayFormatter
     format.DataFrameFormatter = DataFrameFormatter
     format.GenericArrayFormatter = GenericArrayFormatter
     html.HTMLFormatter = HTMLFormatter
