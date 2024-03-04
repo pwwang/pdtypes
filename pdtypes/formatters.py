@@ -58,6 +58,13 @@ class PdtypesDataFrameFormatter(DataFrameFormatter):
             leading_space=self.index,
         )
 
+    def _truncate_horizontally(self) -> None:
+        """Patch it to keep `_datar` metadata when truncating horizontally"""
+        meta = getattr(self.tr_frame, "_datar", {})
+        super()._truncate_horizontally()
+        # pwwang/datar#208
+        self.tr_frame._datar = meta
+
 
 class PdtypesGenericArrayFormatter(GenericArrayFormatter):
     """Generic Array Formatter to show DataFrame element in a cell in a
