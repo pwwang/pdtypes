@@ -60,10 +60,13 @@ class PdtypesDataFrameFormatter(DataFrameFormatter):
 
     def _truncate_horizontally(self) -> None:
         """Patch it to keep `_datar` metadata when truncating horizontally"""
-        meta = getattr(self.tr_frame, "_datar", {})
-        super()._truncate_horizontally()
-        # pwwang/datar#208
-        self.tr_frame._datar = meta
+        if "_datar" not in self.tr_frame._metadata:
+            super()._truncate_horizontally()
+        else:
+            # pwwang/datar#208
+            meta = self.tr_frame._datar
+            super()._truncate_horizontally()
+            self.tr_frame._datar = meta
 
 
 class PdtypesGenericArrayFormatter(GenericArrayFormatter):
