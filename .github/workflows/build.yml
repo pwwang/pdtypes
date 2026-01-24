@@ -16,7 +16,7 @@ jobs:
         pandas: [
           pandas==2.0.0,
           pandas==2.1.4,
-          pandas==2.2.0,
+          pandas==2.2.3,
           pandas==2.3.0,
           pandas==3.0.0,
           pandas  # latest pandas for the specific python version
@@ -32,7 +32,7 @@ jobs:
           - python-version: 3.8
             pandas: pandas==2.1.4
           - python-version: 3.8
-            pandas: pandas==2.2.0
+            pandas: pandas==2.2.3
           - python-version: 3.8
             pandas: pandas==2.3.0
           - python-version: 3.8
@@ -51,6 +51,8 @@ jobs:
             pandas: pandas==2.0.0
           - python-version: 3.13
             pandas: pandas==2.0.0
+          - python-version: 3.13
+            pandas: pandas==2.1.4
 
     steps:
       - uses: actions/checkout@v4
