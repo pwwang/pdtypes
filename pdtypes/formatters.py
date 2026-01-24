@@ -168,9 +168,17 @@ class PdtypesHTMLFormatter(HTMLFormatter):
         nrows = len(frame) + 1
 
         assert isinstance(frame.index, MultiIndex)
-        idx_values = frame.index.format(
-            sparsify=False, adjoin=False, names=False
-        )
+        try:
+            idx_values = frame.index.format(
+                sparsify=False, adjoin=False, names=False
+            )
+        except AttributeError:
+            # pandas v3: Removed Index.format, use Index.astype() with str
+            # or Index.map() with a formatter function instead (GH 55439)
+            idx_values = frame.index._format_multi(
+                sparsify=False, include_names=False
+            )
+
         # add dtype row
         len_idx_values = len(idx_values)
         idx_values = list(zip(*idx_values))
@@ -179,9 +187,17 @@ class PdtypesHTMLFormatter(HTMLFormatter):
         if self.fmt.sparsify:
             # GH3547
             sentinel = lib.no_default
-            levels = frame.index.format(
-                sparsify=sentinel, adjoin=False, names=False
-            )
+            try:
+                levels = frame.index.format(
+                    sparsify=sentinel, adjoin=False, names=False
+                )
+            except AttributeError:
+                # pandas v3: Removed Index.format, use Index.astype() with str
+                # or Index.map() with a formatter function instead (GH 55439)
+                levels = frame.index._format_multi(
+                    sparsify=sentinel, include_names=False
+                )
+
             levels = [("",) + level for level in levels]
             level_lengths = get_level_lengths(levels, sentinel)
             inner_lvl = len(level_lengths) - 1

@@ -53,7 +53,11 @@ def gf():
 def test_unpatched_df(unpatched, df, gf, df_df):
     assert "<int64>" not in str(df)
     assert "<int64>" not in df._repr_html_()
-    assert "<pandas.core.groupby.generic.DataFrameGroupBy" in str(gf)
+    # pandas v2
+    mark1 = "<pandas.core.groupby.generic.DataFrameGroupBy"
+    # pandas v3
+    mark2 = "<pandas.api.typing.DataFrameGroupBy"
+    assert mark1 in str(gf) or mark2 in str(gf)
     assert getattr(gf, "_repr_html_", None) is None
     assert "x  y" in str(df_df)
 
