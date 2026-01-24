@@ -1,6 +1,6 @@
 [build-system]
-requires = [ "poetry>=1.0",]
-build-backend = "poetry.masonry.api"
+requires = [ "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pdtypes"
@@ -19,7 +19,7 @@ pandas = [
     { version = "2.*", python = ">=3.9" },
 ]
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "*"
 pytest-cov = "*"
 pyarrow = "*"  # pandas 2.2 warns about pyarrow not being installed
