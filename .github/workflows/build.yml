@@ -12,23 +12,50 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8, 3.9, "3.10", "3.11"]
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12", "3.13"]
         pandas: [
           pandas==2.0.0,
           pandas==2.1.0,
           pandas==2.2.0,
+          pandas==2.3.0,
+          pandas==3.0.0,
           pandas  # latest pandas for the specific python version
         ]
+        # available combinations
+        # python3.8 -> pandas 2.0.x
+        # python3.9 -> pandas 2.1.x, 2.2.x, 2.3.x
+        # python3.10 -> pandas 2.1.x, 2.2.x, 2.3.x
+        # python3.11 -> pandas 2.1.x, 2.2.x, 2.3.x, 3.0.x
+        # python3.12 -> pandas 2.1.x, 2.2.x, 2.3.x, 3.0.x
+        # python3.13 -> pandas 2.1.x, 2.2.x, 2.3.x, 3.0.x
         exclude:
           - python-version: 3.8
             pandas: pandas==2.1.0
           - python-version: 3.8
             pandas: pandas==2.2.0
+          - python-version: 3.8
+            pandas: pandas==2.3.0
+          - python-version: 3.8
+            pandas: pandas==3.0.0
+          - python-version: 3.9
+            pandas: pandas==2.0.0
+          - python-version: 3.9
+            pandas: pandas==3.0.0
+          - python-version: "3.10"
+            pandas: pandas==2.0.0
+          - python-version: "3.10"
+            pandas: pandas==3.0.0
+          - python-version: 3.11
+            pandas: pandas==2.0.0
+          - python-version: 3.12
+            pandas: pandas==2.0.0
+          - python-version: 3.13
+            pandas: pandas==2.0.0
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Python # Set Python version
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -44,7 +71,7 @@ jobs:
       - name: Test with pytest
         run: pytest tests/ --junitxml=junit/test-results-${{ matrix.python-version }}.xml
       - name: Upload pytest test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pytest-results-${{ matrix.python-version }}
           path: junit/test-results-${{ matrix.python-version }}.xml
@@ -52,7 +79,7 @@ jobs:
         if: ${{ always() }}
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
-        if: matrix.python-version == 3.10
+        if: matrix.python-version == 3.12
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: cov.xml
@@ -63,11 +90,11 @@ jobs:
     if: github.event_name == 'release'
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.12"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Python # Set Python version
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
