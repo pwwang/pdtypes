@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pdtypes"
-version = "0.3.0"
+version = "0.3.1"
 description = "Show data types for pandas data frames in terminal and notebooks"
 authors = [{ name = "pwwang", email = "pwwang@pwwang.com" }]
 license = { text = "BSD 3-Clause" }

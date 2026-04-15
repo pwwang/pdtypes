@@ -1746,7 +1746,7 @@ wheels = [
 
 [[package]]
 name = "pdtypes"
-version = "0.3.0"
+version = "0.3.1"
 source = { editable = "." }
 dependencies = [
     { name = "pandas", version = "2.0.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },

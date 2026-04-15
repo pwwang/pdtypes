@@ -4,6 +4,8 @@
 """
 from .patching import patch, unpatch
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
+
+__all__ = ["patch", "unpatch"]
 
 patch()
